@@ -5,12 +5,11 @@
     "description": "New project bundle for working with database",
     "autoload": {
         "psr-4": {
-            "NewProjectBundle\\": "src/NewProjectBundle"
+            "NewProjectBundle\\": "NewProjectBundle"
         }
     },
     "require": {
-        "php": ">=5.3.3",
-        "symfony/symfony": "3.4.*"
+        "php": ">=5.3.3"
     },
     "minimum-stability": "stable"
 }

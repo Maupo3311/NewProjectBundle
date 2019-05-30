@@ -2,7 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/NewProjectBundle" isTestSource="false" packagePrefix="NewProjectBundle\" />
+      <sourceFolder url="file://$MODULE_DIR$/NewProjectBundle" isTestSource="false" packagePrefix="NewProjectBundle\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
     </content>
     <orderEntry type="inheritedJdk" />

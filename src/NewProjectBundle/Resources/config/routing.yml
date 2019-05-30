@@ -1,3 +1,0 @@
-my_vendor:
-    resource: "@NewProjectBundle/Controller/DefaultController.php"
-    prefix:   /test
