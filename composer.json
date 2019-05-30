@@ -1,11 +1,11 @@
 {
-    "name": "NewProject",
+    "name": "my_vendor",
     "license": "MIT",
     "type": "library",
     "description": "New project bundle for working with database",
     "autoload": {
         "psr-4": {
-            "NewProjectBundle\\": "NewProjectBundle"
+            "EntityBundle\\": "EntityBundle"
         }
     },
     "require": {
