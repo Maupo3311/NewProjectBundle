@@ -10,7 +10,10 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-migrations-bundle": "^2.0",
+        "doctrine/orm": "^2.5"
     },
     "minimum-stability": "stable"
 }
