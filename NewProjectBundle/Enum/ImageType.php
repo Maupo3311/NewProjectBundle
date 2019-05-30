@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Enum;
+namespace NewProjectBundle\Enum;
 
 /**
  * Class ImageType
