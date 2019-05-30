@@ -4,12 +4,10 @@ namespace EntityBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Basket
  *
- * @ApiResource
  * @ORM\Table(name="basket")
  * @ORM\Entity(repositoryClass="EntityBundle\Repository\BasketRepository")
  */
