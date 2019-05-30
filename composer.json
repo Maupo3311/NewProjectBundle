@@ -1,5 +1,5 @@
 {
-    "name": "my_vendor",
+    "name": "my-vendor",
     "license": "MIT",
     "type": "library",
     "description": "New project bundle for working with database",
