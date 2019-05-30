@@ -1,5 +1,5 @@
 {
-    "name": "entity/entity-bundle",
+    "name": "my-entity-bundle",
     "license": "MIT",
     "type": "library",
     "description": "New project bundle for working with database",
