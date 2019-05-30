@@ -4,7 +4,7 @@
     "type": "library",
     "description": "New project bundle for working with database",
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "NewProjectBundle\\": "src/NewProjectBundle"
         }
     },
