@@ -1,0 +1,16 @@
+{
+    "name": "NewProject",
+    "license": "MIT",
+    "type": "library",
+    "description": "New project bundle for working with database",
+    "autoload": {
+        "psr-0": {
+            "NewProjectBundle\\": "src/NewProjectBundle"
+        }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.6.*"
+    },
+    "minimum-stability": "stable"
+}
