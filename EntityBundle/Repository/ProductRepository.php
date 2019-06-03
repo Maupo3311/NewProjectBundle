@@ -44,14 +44,14 @@ class ProductRepository extends EntityRepository
             ->andWhere('p.active = 1');
 
         if (!empty($availableCategories)) {
-
-            $query->andWhere("p.category = {$availableCategories[0]->getId()}");
-            array_shift($availableCategories);
+            $categoryQuery = '';
 
             /** @var Category $category */
             foreach ($availableCategories as $category) {
-                $query->orWhere("p.category = {$category->getId()}");
+                $categoryQuery .= "p.category = {$category->getId()} OR";
             }
+
+            $query->andWhere(substr($categoryQuery, 0, -2));
         }
 
         if (!empty($parameters['priceForm'])) {
