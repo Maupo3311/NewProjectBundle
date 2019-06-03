@@ -48,10 +48,10 @@ class ProductRepository extends EntityRepository
 
             /** @var Category $category */
             foreach ($availableCategories as $category) {
-                $categoryQuery .= "p.category = {$category->getId()} OR";
+                $categoryQuery .= "p.category = {$category->getId()} OR ";
             }
 
-            $query->andWhere(substr($categoryQuery, 0, -2));
+            $query->andWhere(substr($categoryQuery, 0, -3));
         }
 
         if (!empty($parameters['priceForm'])) {
