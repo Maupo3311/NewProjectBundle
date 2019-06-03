@@ -3,7 +3,6 @@
 namespace EntityBundle\Entity;
 
 use EntityBundle\Entity\Image\FeedbackImage;
-use EntityBundle\Repository\FeedbackRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
@@ -105,7 +104,7 @@ class Feedback
     public function __construct()
     {
         $this->created = new DateTime();
-        $this->images  = [];
+        $this->images  = new ArrayCollection;
     }
 
     /**
@@ -154,54 +153,6 @@ class Feedback
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return Feedback
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set email.
-     *
-     * @param string $email
-     *
-     * @return Feedback
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email.
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**

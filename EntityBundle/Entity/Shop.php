@@ -298,6 +298,6 @@ class Shop
             }
         }
 
-        return round($summRating / $quantityProducts, 2);
+        return $quantityProducts != null ? round($summRating / $quantityProducts, 2) : 0;
     }
 }
