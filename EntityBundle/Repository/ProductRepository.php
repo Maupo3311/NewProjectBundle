@@ -54,11 +54,11 @@ class ProductRepository extends EntityRepository
             $query->andWhere(substr($categoryQuery, 0, -3));
         }
 
-        if (!empty($parameters['priceForm'])) {
+        if (!empty($parameters['priceFrom'])) {
             $query->andWhere("p.price > {$parameters['priceFrom']}");
         }
 
-        if (!empty($parameters['ratingForm'])) {
+        if (!empty($parameters['ratingFrom'])) {
             $query->andWhere("p.rating > {$parameters['ratingFrom']}");
         }
 
