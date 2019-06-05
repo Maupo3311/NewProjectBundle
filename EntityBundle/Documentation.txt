@@ -1,0 +1,30 @@
+---------------------------------------
+// composer.json
+
+ "require": {
+    "my-vendor/entity-bundle": "dev-master"
+ }
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/Maupo3311/NewProjectBundle.git"
+    }
+],
+"minimum-stability": "stable"
+---------------------------------------
+|||||||||||||||||||||||||||||||||||||||
+---------------------------------------
+// src/config/config.yaml
+
+// For the health of bundle migrations
+doctrine_migrations:
+  dir_name: '%kernel.project_dir%/vendor/my-vendor/entity-bundle/EntityBundle/Migrations'
+
+// For the health of bundle entities
+doctrine:
+    orm:
+        mappings:
+          EntityBundle:
+            is_bundle: true
+            type: annotation
+----------------------------------------
