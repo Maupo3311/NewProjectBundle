@@ -64,7 +64,7 @@ class Comment
     /**
      * @var ArrayCollection $images
      *
-     * @Groups({"details, images"})
+     * @Groups({"details", "images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\CommentImage",
      *      cascade={"persist","remove"},

@@ -86,7 +86,7 @@ class Shop
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details, categories"})
+     * @Groups({"details", "categories"})
      * @ORM\OneToMany(
      *     targetEntity="Category",
      *     mappedBy="shop",
@@ -99,7 +99,7 @@ class Shop
     /**
      * @var ArrayCollection $images
      *
-     * @Groups({"details, images"})
+     * @Groups({"details", "images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\ShopImage",
      *      cascade={"persist","remove"},

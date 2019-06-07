@@ -43,7 +43,7 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details, products"})
+     * @Groups({"details", "products"})
      * @ORM\OneToMany(
      *     targetEntity="Product",
      *     mappedBy="category",

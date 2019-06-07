@@ -70,7 +70,7 @@ class Product
     /**
      * @var ArrayCollection $images
      *
-     * @Groups({"details, images"})
+     * @Groups({"details", "images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\ProductImage",
      *      cascade={"persist","remove"},
@@ -86,7 +86,7 @@ class Product
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details, basket"})
+     * @Groups({"details", "basket"})
      * @ORM\OneToMany(
      *     targetEntity="Basket",
      *     mappedBy="basketProduct",
@@ -105,7 +105,7 @@ class Product
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details, comments"})
+     * @Groups({"details", "comments"})
      * @ORM\OneToMany(
      *     targetEntity="Comment",
      *     mappedBy="product",

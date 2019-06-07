@@ -60,7 +60,7 @@ class Feedback
     /**
      * @var ArrayCollection $images
      *
-     * @Groups({"details, images"})
+     * @Groups({"details", "images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\FeedbackImage",
      *      cascade={"persist","remove"},

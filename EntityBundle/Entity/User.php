@@ -115,7 +115,7 @@ class User extends BaseUser
     /**
      * @var Collection
      *
-     * @Groups({"details, feedbacks"})
+     * @Groups({"details", "feedbacks"})
      * @ORM\OneToMany(targetEntity="Feedback", mappedBy="user")
      */
     private $feedbacks;
@@ -123,7 +123,7 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details, basket"})
+     * @Groups({"details", "basket"})
      * @ORM\OneToMany(
      *     targetEntity="Basket",
      *     mappedBy="user",
@@ -134,7 +134,7 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details, comments"})
+     * @Groups({"details", "comments"})
      * @ORM\OneToMany(
      *     targetEntity="Comment",
      *     mappedBy="user"
