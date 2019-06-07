@@ -4,6 +4,7 @@ namespace EntityBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Basket
@@ -16,6 +17,8 @@ class Basket
     /**
      * @var int
      *
+     *
+     * @Groups({"listing"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -25,6 +28,7 @@ class Basket
     /**
      * @var User
      *
+     * @Groups({"listing"})
      * @ORM\ManyToOne(targetEntity="User", inversedBy="basketItems")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
@@ -33,6 +37,7 @@ class Basket
     /**
      * @var Product
      *
+     * @Groups({"listing"})
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="basketItems")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false)
      */
@@ -41,6 +46,7 @@ class Basket
     /**
      * @var integer
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="number_of_products", type="integer", nullable=false)
      */
     private $numberOfProducts;

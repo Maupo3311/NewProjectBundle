@@ -5,6 +5,7 @@ namespace EntityBundle\Entity;
 use EntityBundle\Services\CoordinateService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Shop
@@ -17,6 +18,7 @@ class Shop
     /**
      * @var int
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -26,6 +28,7 @@ class Shop
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(
      *     name="name",
      *     type="string",
@@ -38,6 +41,7 @@ class Shop
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(
      *     name="description",
      *     type="text",
@@ -49,6 +53,7 @@ class Shop
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(
      *     name="phone_number",
      *     type="string",
@@ -59,6 +64,7 @@ class Shop
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(
      *     name="lat",
      *     type="string",
@@ -69,6 +75,7 @@ class Shop
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(
      *     name="lon",
      *     type="string",
@@ -79,6 +86,7 @@ class Shop
     /**
      * @var ArrayCollection
      *
+     * @Groups({"details, categories"})
      * @ORM\OneToMany(
      *     targetEntity="Category",
      *     mappedBy="shop",
@@ -91,6 +99,7 @@ class Shop
     /**
      * @var ArrayCollection $images
      *
+     * @Groups({"details, images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\ShopImage",
      *      cascade={"persist","remove"},

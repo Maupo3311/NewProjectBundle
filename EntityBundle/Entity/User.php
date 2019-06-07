@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Stripe\Customer;
 use Stripe\Stripe;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * User
@@ -20,13 +21,16 @@ class User extends BaseUser
     /**
      * @var int
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
-    /** @ORM\Column(
+    /**
+     * @Groups({"listing"})
+     * @ORM\Column(
      *     name="vkontakte_id",
      *     type="string",
      *     length=255,
@@ -34,7 +38,9 @@ class User extends BaseUser
      */
     protected $vkontakte_id;
 
-    /** @ORM\Column(
+    /**
+     * @Groups({"listing"})
+     * @ORM\Column(
      *     name="vkontakte_access_token",
      *     type="string",
      *     length=255,
@@ -42,7 +48,9 @@ class User extends BaseUser
      */
     protected $vkontakte_access_token;
 
-    /** @ORM\Column(
+    /**
+     * @Groups({"listing"})
+     * @ORM\Column(
      *     name="yandex_id",
      *     type="string",
      *     length=255,
@@ -50,7 +58,9 @@ class User extends BaseUser
      */
     protected $yandex_id;
 
-    /** @ORM\Column(
+    /**
+     * @Groups({"listing"})
+     * @ORM\Column(
      *     name="yandex_access_token",
      *     type="string",
      *     length=255,
@@ -58,7 +68,9 @@ class User extends BaseUser
      */
     protected $yandex_access_token;
 
-    /** @ORM\Column(
+    /**
+     * @Groups({"listing"})
+     * @ORM\Column(
      *     name="github_id",
      *     type="string",
      *     length=255,
@@ -66,7 +78,9 @@ class User extends BaseUser
      */
     protected $github_id;
 
-    /** @ORM\Column(
+    /**
+     * @Groups({"listing"})
+     * @ORM\Column(
      *     name="github_access_token",
      *     type="string",
      *     length=255,
@@ -77,6 +91,7 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="customer_id", type="string", length = 255, nullable = true)
      */
     private $customerId;
@@ -84,6 +99,7 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="first_name", type="string", length=32)
      */
     private $firstName;
@@ -91,12 +107,15 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="last_name", type="string", length=32)
      */
     private $lastName;
 
     /**
      * @var Collection
+     *
+     * @Groups({"details, feedbacks"})
      * @ORM\OneToMany(targetEntity="Feedback", mappedBy="user")
      */
     private $feedbacks;
@@ -104,6 +123,7 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
+     * @Groups({"details, basket"})
      * @ORM\OneToMany(
      *     targetEntity="Basket",
      *     mappedBy="user",
@@ -114,6 +134,7 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
+     * @Groups({"details, comments"})
      * @ORM\OneToMany(
      *     targetEntity="Comment",
      *     mappedBy="user"

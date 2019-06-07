@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 use Exception;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Comment
@@ -19,6 +20,7 @@ class Comment
     /**
      * @var int
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,6 +30,7 @@ class Comment
     /**
      * @var User
      *
+     * @Groups({"listing"})
      * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
@@ -36,6 +39,7 @@ class Comment
     /**
      * @var Product
      *
+     * @Groups({"listing"})
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="comments")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false)
      */
@@ -44,6 +48,7 @@ class Comment
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="message", type="text", nullable=false)
      */
     private $message;
@@ -51,6 +56,7 @@ class Comment
     /**
      * @var DateTime
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
@@ -58,6 +64,7 @@ class Comment
     /**
      * @var ArrayCollection $images
      *
+     * @Groups({"details, images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\CommentImage",
      *      cascade={"persist","remove"},

@@ -11,6 +11,7 @@ use Exception;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Feedback
@@ -24,6 +25,7 @@ class Feedback
     /**
      * @var int
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -33,12 +35,14 @@ class Feedback
     /**
      * @var User
      *
+     * @Groups({"listing"})
      * @ORM\ManyToOne(targetEntity="User", inversedBy="feedbacks")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
+     * @Groups({"listing"})
      * @var string
      * @Assert\NotBlank
      * @ORM\Column(name="message", type="text", nullable=false)
@@ -48,6 +52,7 @@ class Feedback
     /**
      * @var DateTime
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
@@ -55,6 +60,7 @@ class Feedback
     /**
      * @var ArrayCollection $images
      *
+     * @Groups({"details, images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\FeedbackImage",
      *      cascade={"persist","remove"},
