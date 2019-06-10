@@ -71,7 +71,6 @@ class Product
     /**
      * @var ArrayCollection $images
      *
-     * @Serializer\Groups({"details"})
      * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\ProductImage",
