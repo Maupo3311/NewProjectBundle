@@ -5,11 +5,12 @@ namespace EntityBundle\Entity;
 use EntityBundle\Services\CoordinateService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Shop
  *
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Table(name="shop")
  * @ORM\Entity(repositoryClass="EntityBundle\Repository\ShopRepository")
  */
@@ -18,7 +19,7 @@ class Shop
     /**
      * @var int
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,7 +29,7 @@ class Shop
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="name",
      *     type="string",
@@ -41,7 +42,7 @@ class Shop
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="description",
      *     type="text",
@@ -53,7 +54,7 @@ class Shop
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="phone_number",
      *     type="string",
@@ -64,7 +65,7 @@ class Shop
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="lat",
      *     type="string",
@@ -75,7 +76,7 @@ class Shop
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="lon",
      *     type="string",
@@ -86,7 +87,8 @@ class Shop
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details", "categories"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="Category",
      *     mappedBy="shop",
@@ -99,7 +101,8 @@ class Shop
     /**
      * @var ArrayCollection $images
      *
-     * @Groups({"details", "images"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\ShopImage",
      *      cascade={"persist","remove"},

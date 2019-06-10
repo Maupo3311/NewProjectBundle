@@ -4,11 +4,12 @@ namespace EntityBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Basket
  *
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Table(name="basket")
  * @ORM\Entity(repositoryClass="EntityBundle\Repository\BasketRepository")
  */
@@ -17,8 +18,7 @@ class Basket
     /**
      * @var int
      *
-     *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,7 +28,7 @@ class Basket
     /**
      * @var User
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\ManyToOne(targetEntity="User", inversedBy="basketItems")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
@@ -37,7 +37,7 @@ class Basket
     /**
      * @var Product
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="basketItems")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false)
      */
@@ -46,7 +46,7 @@ class Basket
     /**
      * @var integer
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="number_of_products", type="integer", nullable=false)
      */
     private $numberOfProducts;

@@ -5,11 +5,12 @@ namespace EntityBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Product
  *
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="EntityBundle\Repository\ProductRepository")
  * @ORM\HasLifecycleCallbacks()
@@ -19,7 +20,7 @@ class Product
     /**
      * @var int
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -29,7 +30,7 @@ class Product
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -37,7 +38,7 @@ class Product
     /**
      * @var integer
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
@@ -45,7 +46,7 @@ class Product
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -53,7 +54,7 @@ class Product
     /**
      * @var Category
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -62,7 +63,7 @@ class Product
     /**
      * @var boolean
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(type="boolean"), options{"default": true}
      */
     private $active = true;
@@ -70,7 +71,8 @@ class Product
     /**
      * @var ArrayCollection $images
      *
-     * @Groups({"details", "images"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\ProductImage",
      *      cascade={"persist","remove"},
@@ -86,7 +88,8 @@ class Product
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details", "basket"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="Basket",
      *     mappedBy="basketProduct",
@@ -97,7 +100,7 @@ class Product
     /**
      * @var integer
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="number", type="integer", nullable=false)
      */
     private $number;
@@ -105,7 +108,8 @@ class Product
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details", "comments"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="Comment",
      *     mappedBy="product",
@@ -118,7 +122,7 @@ class Product
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="rating", type="decimal", precision=4, scale=2)
      */
     private $rating;

@@ -4,11 +4,12 @@ namespace EntityBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Category
  *
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="EntityBundle\Repository\CategoryRepository")
  */
@@ -17,7 +18,7 @@ class Category
     /**
      * @var int
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -27,7 +28,7 @@ class Category
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="name", type="string", length=128, unique=true)
      */
     private $name;
@@ -35,7 +36,7 @@ class Category
     /**
      * @var bool
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(type="boolean", options={"default": true})
      */
     private $active = true;
@@ -43,7 +44,8 @@ class Category
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details", "products"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="Product",
      *     mappedBy="category",
@@ -56,7 +58,7 @@ class Category
     /**
      * @var Shop
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\ManyToOne(targetEntity="Shop", inversedBy="categories")
      * @ORM\JoinColumn(name="shop_id", referencedColumnName="id")
      */

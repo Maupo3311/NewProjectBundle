@@ -11,11 +11,12 @@ use Exception;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Feedback
  *
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Table(name="feedback")
  * @ORM\Entity(repositoryClass="EntityBundle\Repository\FeedbackRepository")
  * @ORM\HasLifecycleCallbacks()
@@ -25,7 +26,7 @@ class Feedback
     /**
      * @var int
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -35,14 +36,14 @@ class Feedback
     /**
      * @var User
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\ManyToOne(targetEntity="User", inversedBy="feedbacks")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @var string
      * @Assert\NotBlank
      * @ORM\Column(name="message", type="text", nullable=false)
@@ -52,7 +53,7 @@ class Feedback
     /**
      * @var DateTime
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
@@ -60,7 +61,8 @@ class Feedback
     /**
      * @var ArrayCollection $images
      *
-     * @Groups({"details", "images"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\FeedbackImage",
      *      cascade={"persist","remove"},

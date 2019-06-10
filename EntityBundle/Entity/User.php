@@ -8,11 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Stripe\Customer;
 use Stripe\Stripe;
-use Symfony\Component\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * User
  *
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="EntityBundle\Repository\UserRepository")
  */
@@ -21,7 +22,7 @@ class User extends BaseUser
     /**
      * @var int
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -29,7 +30,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="vkontakte_id",
      *     type="string",
@@ -39,7 +40,7 @@ class User extends BaseUser
     protected $vkontakte_id;
 
     /**
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="vkontakte_access_token",
      *     type="string",
@@ -49,7 +50,7 @@ class User extends BaseUser
     protected $vkontakte_access_token;
 
     /**
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="yandex_id",
      *     type="string",
@@ -59,7 +60,7 @@ class User extends BaseUser
     protected $yandex_id;
 
     /**
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="yandex_access_token",
      *     type="string",
@@ -69,7 +70,7 @@ class User extends BaseUser
     protected $yandex_access_token;
 
     /**
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="github_id",
      *     type="string",
@@ -79,7 +80,7 @@ class User extends BaseUser
     protected $github_id;
 
     /**
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(
      *     name="github_access_token",
      *     type="string",
@@ -91,7 +92,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="customer_id", type="string", length = 255, nullable = true)
      */
     private $customerId;
@@ -99,7 +100,7 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="first_name", type="string", length=32)
      */
     private $firstName;
@@ -107,15 +108,16 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Groups({"listing"})
+     * @Serializer\Expose()
      * @ORM\Column(name="last_name", type="string", length=32)
      */
     private $lastName;
 
     /**
-     * @var Collection
+     * @var ArrayCollection
      *
-     * @Groups({"details", "feedbacks"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(targetEntity="Feedback", mappedBy="user")
      */
     private $feedbacks;
@@ -123,7 +125,8 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details", "basket"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="Basket",
      *     mappedBy="user",
@@ -134,7 +137,8 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @Groups({"details", "comments"})
+     * @Serializer\Groups({"details"})
+     * @Serializer\Expose()
      * @ORM\OneToMany(
      *     targetEntity="Comment",
      *     mappedBy="user"
