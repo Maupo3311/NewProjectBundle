@@ -4,6 +4,7 @@ namespace EntityBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Category
@@ -16,6 +17,7 @@ class Category
     /**
      * @var int
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -25,18 +27,23 @@ class Category
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="name", type="string", length=128, unique=true)
      */
     private $name;
 
     /**
      * @var bool
+     *
+     * @Groups({"listing"})
      * @ORM\Column(type="boolean", options={"default": true})
      */
     private $active = true;
 
     /**
      * @var ArrayCollection
+     *
+     * @Groups({"details", "products"})
      * @ORM\OneToMany(
      *     targetEntity="Product",
      *     mappedBy="category",
@@ -49,6 +56,7 @@ class Category
     /**
      * @var Shop
      *
+     * @Groups({"listing"})
      * @ORM\ManyToOne(targetEntity="Shop", inversedBy="categories")
      * @ORM\JoinColumn(name="shop_id", referencedColumnName="id")
      */

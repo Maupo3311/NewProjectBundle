@@ -5,6 +5,7 @@ namespace EntityBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Product
@@ -18,6 +19,7 @@ class Product
     /**
      * @var int
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -27,6 +29,7 @@ class Product
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -34,6 +37,7 @@ class Product
     /**
      * @var integer
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
@@ -41,6 +45,7 @@ class Product
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -48,6 +53,7 @@ class Product
     /**
      * @var Category
      *
+     * @Groups({"listing"})
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -55,6 +61,8 @@ class Product
 
     /**
      * @var boolean
+     *
+     * @Groups({"listing"})
      * @ORM\Column(type="boolean"), options{"default": true}
      */
     private $active = true;
@@ -62,6 +70,7 @@ class Product
     /**
      * @var ArrayCollection $images
      *
+     * @Groups({"details", "images"})
      * @ORM\OneToMany(
      *     targetEntity="EntityBundle\Entity\Image\ProductImage",
      *      cascade={"persist","remove"},
@@ -77,6 +86,7 @@ class Product
     /**
      * @var ArrayCollection
      *
+     * @Groups({"details", "basket"})
      * @ORM\OneToMany(
      *     targetEntity="Basket",
      *     mappedBy="basketProduct",
@@ -87,6 +97,7 @@ class Product
     /**
      * @var integer
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="number", type="integer", nullable=false)
      */
     private $number;
@@ -94,6 +105,7 @@ class Product
     /**
      * @var ArrayCollection
      *
+     * @Groups({"details", "comments"})
      * @ORM\OneToMany(
      *     targetEntity="Comment",
      *     mappedBy="product",
@@ -106,6 +118,7 @@ class Product
     /**
      * @var string
      *
+     * @Groups({"listing"})
      * @ORM\Column(name="rating", type="decimal", precision=4, scale=2)
      */
     private $rating;
